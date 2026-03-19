@@ -20,3 +20,81 @@
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=anikett-999&show_icons=true&locale=en&layout=compact" alt="anikett-999" /></p>
 
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=anikett-999&show_icons=true&locale=en" alt="anikett-999" /></p>
+
+## Notion Monthly Finance Tracker Workspace
+
+Use this setup in Notion to track all monthly financial transactions in one place.
+
+### Where to create it
+- Open your **Notion app** (desktop/mobile/web).
+- In the **left sidebar**, click **+ Add a page**.
+- Create a new top-level page named **Finance HQ**.
+- Everything below should be created **inside that Finance HQ page in Notion** (not in this GitHub repo).
+
+### 1) Create a workspace page
+- Create a top-level page: **Finance HQ**
+- Add 3 sub-pages:
+  - **Transactions**
+  - **Monthly Dashboard**
+  - **Budgets & Goals**
+
+### 2) Build the Transactions database (table)
+Create a full-page table named **Transactions** with these properties:
+
+| Property | Type | Purpose |
+|---|---|---|
+| Date | Date | Transaction date |
+| Description | Title | Merchant or note |
+| Amount | Number (Currency) | Transaction value |
+| Type | Select | Expense / Income / Transfer |
+| Category | Select | Food, Rent, Bills, Salary, Travel, etc. |
+| Account | Select | Cash, Bank, Credit Card, Wallet |
+| Payment Mode | Select | UPI, Card, Net Banking, Cash |
+| Month | Formula | Month bucket for reporting |
+| Tags | Multi-select | Optional labels |
+| Receipt | Files & media | Bill or invoice proof |
+
+Use this formula for **Month**:
+`formatDate(prop("Date"), "YYYY-MM")`
+
+### 3) Add useful views
+Inside **Transactions**, create these views:
+- **All Transactions** (default table)
+- **This Month** (filter Month = current month)
+- **Expenses Only** (filter Type = Expense)
+- **Income Only** (filter Type = Income)
+- **By Category** (board grouped by Category)
+- **Calendar View** (calendar by Date)
+
+### 4) Create the Monthly Dashboard
+On **Monthly Dashboard**:
+- Add linked database of **Transactions**
+- Create summary blocks:
+  - **Total Income (Month)**
+  - **Total Expense (Month)**
+  - **Net Savings = Income - Expense**
+- Add category breakdown (group by Category)
+- Add top 5 biggest expenses (sort Amount descending, filter Type=Expense)
+
+### 5) Build Budgets & Goals page
+Create a second table named **Budgets**:
+- Category (Title)
+- Monthly Budget (Number)
+- Month (Date or text YYYY-MM)
+- Actual Spend (Rollup from Transactions)
+- Remaining (Formula = Budget - Actual)
+- Status (Formula: On Track / Overspent)
+
+### 6) Weekly and monthly routine
+- **Daily:** add every transaction immediately
+- **Weekly:** review uncategorized transactions
+- **Month-end:** duplicate month dashboard, close totals, set next month budgets
+
+### Ready-to-copy transaction examples
+| Date | Description | Amount | Type | Category | Account | Payment Mode |
+|---|---|---:|---|---|---|---|
+| 2026-03-01 | Salary Credit | 85000 | Income | Salary | Bank | Net Banking |
+| 2026-03-03 | Grocery Store | 2400 | Expense | Food | Credit Card | Card |
+| 2026-03-05 | Electricity Bill | 1800 | Expense | Bills | Bank | UPI |
+
+This structure gives one clean Notion workspace for complete monthly financial tracking.
